@@ -1,4 +1,5 @@
 import { Webhook } from "svix";
+import userModel from "../models/userModel.js";
 
 // API Controller Functions to Manage Clerk User With Database
 // http://localhost:3000/api/user/webhooks
@@ -10,8 +11,8 @@ const clerkWebhooks = async (req, res) => {
 
     await whook.verify(JSON.stringify(req.body), {
       "svix-id": req.headers["svix-id"],
-      "svix-signature": req.headers["svix-signature"],
       "svix-timestamp": req.headers["svix-timestamp"],
+      "svix-signature": req.headers["svix-signature"],
     });
 
     const { data, type } = req.body;
