@@ -42,9 +42,9 @@ function Result() {
               Try another image
             </button>
             <a
-              className="px-8 py-2.5 text-white text-sm bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full hover:scale-105 transition-all duration-700"
               href={resultImage}
               download
+              className="px-8 py-2.5 text-white text-sm bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full hover:scale-105 transition-all duration-700"
             >
               Download image
             </a>

@@ -24,12 +24,12 @@ const removeBgImage = async (req, res) => {
     // Reading the image file
     const imageFile = fs.createReadStream(imagePath);
 
-    const formData = new FormData();
-    formData.append("image_file", imageFile);
+    const formdata = new FormData();
+    formdata.append("image_file", imageFile);
 
     const { data } = await axios.post(
       "https://clipdrop-api.co/remove-background/v1",
-      formData,
+      formdata,
       {
         headers: {
           "x-api-key": process.env.CLIPDROP_API,
@@ -40,7 +40,7 @@ const removeBgImage = async (req, res) => {
 
     const base64Image = Buffer.from(data, "binary").toString("base64");
 
-    const resultImage = `data:${req.file.mimetype}base64,${base64Image}`;
+    const resultImage = `data:${req.file.mimetype};base64,${base64Image}`;
 
     await userModel.findOneAndUpdate(user._id, {
       creditBalance: user.creditBalance - 1,
